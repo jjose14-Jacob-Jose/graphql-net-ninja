@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  npm-runner:
+    container_name: npm-runner
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npm install && \
+        npm install @apollo/server graphql && \
+        npm start
+    ports:
+      - "4000:4000"
