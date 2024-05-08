@@ -12,6 +12,7 @@ services:
       - |
         npm install && \
         npm install @apollo/server graphql && \
-        npm start
+        npm start && \
+        nodemon index.js
     ports:
       - "4000:4000"
