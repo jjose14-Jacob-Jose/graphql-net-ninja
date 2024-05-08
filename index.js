@@ -23,11 +23,15 @@ const typeDefs = `#graphql
         name: String!
         verified: Boolean!
     }
+    # Step 1: We specify entry points in 'Query'.
     type Query {
         books: [Book]
         games: [Game]
+        game(id: ID!): Game
+        review(id: ID!): Review
         reviews: [Review]
         authors: [Author]
+        author(id: ID!): Author
     }
 `;
 
@@ -46,14 +50,24 @@ const resolvers = {
     Query: {
         books: () => books,
 
+
         games() {
             return db.games
+        },
+        game(parent, args) {
+            return db.games.find((game) => game.id === args.id)
         },
         reviews() {
             return db.reviews
         },
         authors() {
             return db.authors
+        },
+        author(parent, args) {
+            return db.authors.find((author) => author.id === args.id)
+        },
+        review(parent, args) {
+            return db.reviews.find((review) => review.id === args.id)
         }
     },
 
