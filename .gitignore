@@ -1,0 +1,7 @@
+# IntelliJ Configuration files
+.idea
+
+node_modules
+package-lock.json
+
+clipboard.txt
