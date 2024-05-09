@@ -133,3 +133,67 @@ Variables
      "gameId": "2",
    }
 ```
+
+# Queries
+## Mutation
+### 1. Deletion
+Operation:
+```
+   mutation m1($id: ID!) {
+     deleteGame(id: $id) {
+       id
+       title
+   
+     }
+   }
+```
+Variables:
+```
+   {
+     "id": "3",
+   }
+
+```
+
+### 2. Addition
+Operation:
+```
+   mutation add($game: AddGameInput!) {
+     addGame(game: $game) {
+       id,
+       title,
+       platform
+     }
+   }
+
+```
+Variables:
+```
+   {
+     "game": {
+       "title" : "new game",
+       "platform" : ["PS5"]
+     }
+   }
+```
+
+### 3. Update
+Operation: 
+```
+   mutation updateGame ($id: ID!, $editInputGame: EditInputGame, $deleteGameId: ID!) {
+     updateGame(editInputGame : $editInputGame, id: $id) {
+       title, 
+       platform
+     }
+   }
+```
+Variables:
+```
+{
+  "editInputGame" : {
+    "title" : "Edited Game",
+    "platform" : ["PC"]
+  },
+  "id" : "1"
+}
+```
